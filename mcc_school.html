@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCC Higher Secondary School</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #6B1F1F;
+    --gold: #C8A45A;
+    --gold-light: #E8C97A;
+    --cream: #FAF6EF;
+    --dark: #1A0A0A;
+    --mid: #3A1A1A;
+    --text: #2C1A1A;
+    --muted: #8A6A5A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--gold);
+    height: 72px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .crest {
+    width: 46px;
+    height: 46px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    line-height: 1;
+  }
+
+  .logo-text .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  .logo-text .sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  nav {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C8B8A8;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    height: 92vh;
+    min-height: 600px;
+    background: var(--dark);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200,164,90,0.04) 40px, rgba(200,164,90,0.04) 41px),
+      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(200,164,90,0.04) 40px, rgba(200,164,90,0.04) 41px);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(107,31,31,0.35) 0%, transparent 70%);
+    top: -150px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 10%;
+    max-width: 900px;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-year {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-year::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-motto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--muted);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    margin-bottom: 40px;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.35s;
+  }
+
+  .hero-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .hero-year-badge {
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(100px, 14vw, 200px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,164,90,0.12);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--maroon);
+    padding: 28px 10%;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid rgba(200,164,90,0.3);
+  }
+
+  .stat {
+    text-align: center;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat .label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,246,239,0.6);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 90px 10%; }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 50px;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #4A3030;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 16px 24px;
+    margin: 32px 0;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--maroon);
+    line-height: 1.5;
+    background: rgba(200,164,90,0.06);
+  }
+
+  .about-aside {
+    padding-top: 20px;
+  }
+
+  .info-card {
+    background: var(--dark);
+    padding: 36px;
+    margin-bottom: 20px;
+  }
+
+  .info-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .info-card ul {
+    list-style: none;
+  }
+
+  .info-card li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #D0C0B0;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(200,164,90,0.12);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .info-card li:last-child { border-bottom: none; }
+
+  .info-card li span { color: var(--gold-light); }
+
+  /* ── FACILITIES ── */
+  .facilities { background: #F0EAE0; }
+
+  .facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2px;
+  }
+
+  .facility-item {
+    background: var(--dark);
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+    cursor: default;
+  }
+
+  .facility-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .facility-item:hover { background: var(--mid); }
+  .facility-item:hover::before { transform: scaleX(1); }
+
+  .facility-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .facility-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--cream);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .facility-item p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  /* ── HISTORY TIMELINE ── */
+  .history { background: var(--dark); }
+  .history .section-title { color: var(--cream); }
+
+  .timeline {
+    position: relative;
+    padding-left: 60px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -51px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--dark);
+  }
+
+  .timeline-year {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .timeline-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--cream);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .timeline-item p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: #8A7A6A;
+    line-height: 1.7;
+  }
+
+  /* ── ALUMNI ── */
+  .alumni { background: var(--cream); }
+
+  .alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .alumni-card {
+    background: var(--dark);
+    padding: 24px 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .alumni-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(107,31,31,0.25);
+  }
+
+  .alumni-initials {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--maroon);
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin: 0 auto 14px;
+  }
+
+  .alumni-card .alumni-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .alumni-card .alumni-role {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--maroon);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact .section-label::before { background: var(--gold-light); }
+  .contact .section-label { color: var(--gold-light); }
+  .contact .section-title { color: var(--cream); }
+
+  .contact-details p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(250,246,239,0.75);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .contact-details strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .contact-details a {
+    color: var(--gold-light);
+    text-decoration: none;
+    font-style: italic;
+  }
+
+  .contact-map {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(200,164,90,0.2);
+    padding: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: rgba(250,246,239,0.5);
+    font-style: italic;
+    text-align: center;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .contact-map .map-icon { font-size: 40px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 36px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(200,164,90,0.2);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-motto {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 22px;
+    letter-spacing: 12px;
+    opacity: 0.5;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .about-grid, .contact { grid-template-columns: 1fr; gap: 40px; }
+    .hero-year-badge { display: none; }
+    section { padding: 60px 6%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-wrap">
+    <div class="crest">MCC</div>
+    <div class="logo-text">
+      <div class="name">Madras Christian College</div>
+      <div class="sub">Higher Secondary School · Est. 1835</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#history">History</a>
+    <a href="#alumni">Alumni</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-year">Established 1835 · Chennai, Tamil Nadu</div>
+    <h1>Shaping Minds,<br><em>Building Legacy</em></h1>
+    <p class="hero-motto">"In Hoc Signo" — In This Sign Conquer</p>
+    <a href="#about" class="hero-btn">Discover Our Story</a>
+  </div>
+  <div class="hero-year-badge">1835</div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><span class="num">191+</span><span class="label">Years of Excellence</span></div>
+  <div class="stat"><span class="num">78</span><span class="label">Harrington Road, Chetpet</span></div>
+  <div class="stat"><span class="num">20+</span><span class="label">Distinguished Alumni</span></div>
+  <div class="stat"><span class="num">8 AM</span><span class="label">Daily Assembly</span></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">Our Institution</div>
+  <h2 class="section-title">A Legacy of<br>Excellence in Education</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>MCC Higher Secondary School is one of Chennai's most storied institutions, founded in 1835 by Rev. George James Laurie and Rev. Matthew Bowie as St. Andrew's School in Egmore. What began as a modest school for boys has grown into a premier educational landmark.</p>
+      <div class="pull-quote">"Conveying as great an amount of truth as possible through the channel of a good education."</div>
+      <p>Located at its present campus in Chetpet — formerly known as Napier Garden — since 1950, the school blends a rich colonial heritage with modern academic rigour. It is affiliated with the Tamil Nadu State Board and conducts classes from 8 AM to 4 PM daily.</p>
+      <p>MCC is part of the United States Department of State exchange programme and participates in AFS student exchanges to the United States and Japan, giving students a truly global outlook.</p>
+    </div>
+    <div class="about-aside">
+      <div class="info-card">
+        <h4>School at a Glance</h4>
+        <ul>
+          <li>Founded <span>3 April 1835</span></li>
+          <li>Headmaster <span>Dr. G.J. Manohar</span></li>
+          <li>Board <span>Tamil Nadu State</span></li>
+          <li>Medium <span>English & Tamil</span></li>
+          <li>Motto <span>In Hoc Signo</span></li>
+          <li>Type <span>Aided + Self-Finance</span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Address</h4>
+        <ul>
+          <li>78, Harrington Road<span></span></li>
+          <li>Chetpet, Chennai<span>600 031</span></li>
+          <li>Tamil Nadu, India<span></span></li>
+          <li>Website <span><a href="http://www.mccschool.edu.in" style="color:var(--gold-light);text-decoration:none;">mccschool.edu.in</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="facilities" id="facilities">
+  <div class="section-label">Campus Life</div>
+  <h2 class="section-title">World-Class Facilities<br>at the Heart of Chennai</h2>
+  <div class="facilities-grid">
+    <div class="facility-item">
+      <span class="facility-icon">🎾</span>
+      <h3>Tennis Courts</h3>
+      <p>Home of the Britannia Amritraj Tennis Academy — a legacy of sporting excellence.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">🏊</span>
+      <h3>Swimming Pool</h3>
+      <p>A full-sized pool for competitive swimming and recreational use.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">🏏</span>
+      <h3>Cricket Ground</h3>
+      <p>Full-sized cricket ground for training and inter-school competitions.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">⚽</span>
+      <h3>Football & Hockey</h3>
+      <p>Dedicated fields for football and hockey, hosted in a large open campus.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">🏀</span>
+      <h3>Basketball & Volleyball</h3>
+      <p>Dedicated courts for court sports, encouraging teamwork and fitness.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">🔬</span>
+      <h3>Science Laboratories</h3>
+      <p>Two each of Physics, Chemistry, and Junior Science labs, fully equipped.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">💻</span>
+      <h3>Computer Labs</h3>
+      <p>Two modern computer labs with Smart Board classrooms for digital learning.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">🎭</span>
+      <h3>Auditorium</h3>
+      <p>A large air-conditioned auditorium for cultural events, Annual Day & more.</p>
+    </div>
+    <div class="facility-item">
+      <span class="facility-icon">📚</span>
+      <h3>Library</h3>
+      <p>A well-stocked library supporting academic and independent learning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="history" id="history">
+  <div class="section-label" style="color:var(--gold);">Our Journey</div>
+  <h2 class="section-title">191 Years of History</h2>
+  <div class="ornament">✦ ✦ ✦</div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">1835</div>
+      <h3>The Founding</h3>
+      <p>Rev. James Laurie and Rev. Matthew Bowie establish St. Andrew's School in Egmore. Rev. John Anderson renames it the General Assembly School, welcoming 59 boys.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">1862</div>
+      <h3>Rev. Dr. William Miller</h3>
+      <p>Miller takes the helm, founding Madras Christian College on a 375-acre wooded campus and transforming the institution into a premier South Asian educational centre.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">1877</div>
+      <h3>A New Name</h3>
+      <p>The school receives its enduring name: <em style="color:var(--gold-light);">Madras Christian College</em>. Curriculum is broadened and reputation grows across the region.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">1950</div>
+      <h3>The Chetpet Campus</h3>
+      <p>Under Mr. Kuruvilla Jacob, the school moves to its current campus at Napier Garden, Chetpet — a landmark moment in its institutional history.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">1973–1992</div>
+      <h3>Dr. Clement Felix Era</h3>
+      <p>The swimming pool, auditorium, hostels, the Britannia Amritraj Tennis Academy, and the MRF Pace Foundation are established. Higher Secondary course is introduced.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2006–Present</div>
+      <h3>Modern Era</h3>
+      <p>Dr. G.J. Manohar introduces Smart Board Classes, nursery and primary sections, student exchange programmes, and career guidance — steering MCC into the 21st century.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALUMNI -->
+<section class="alumni" id="alumni">
+  <div class="section-label">Notable MCCians</div>
+  <h2 class="section-title">Alumni Who Shaped<br>India & the World</h2>
+  <div class="alumni-grid">
+    <div class="alumni-card">
+      <div class="alumni-initials">MKS</div>
+      <div class="alumni-name">M. K. Stalin</div>
+      <div class="alumni-role">Chief Minister, Tamil Nadu</div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-initials">PC</div>
+      <div class="alumni-name">P. Chidambaram</div>
+      <div class="alumni-role">Former Finance Minister</div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-initials">ARR</div>
+      <div class="alumni-name">A. R. Rahman</div>
+      <div class="alumni-role">Oscar-Winning Composer</div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-initials">LP</div>
+      <div class="alumni-name">Leander Paes</div>
+      <div class="alumni-role">Tennis Grand Slam Champion</div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-initials">GVM</div>
+      <div class="alumni-name">Gautham Menon</div>
+      <div class="alumni-role">Filmmaker</div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-initials">RKN</div>
+      <div class="alumni-name">R. K. Narayan</div>
+      <div class="alumni-role">Legendary Author</div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-initials">NR</div>
+      <div class="alumni-name">N. Ram</div>
+      <div class="alumni-role">Journalist & Publisher</div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-initials">SD</div>
+      <div class="alumni-name">Somdev Devvarman</div>
+      <div class="alumni-role">Davis Cup Tennis Star</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <div class="section-label">Find Us</div>
+    <h2 class="section-title">Visit Our<br>Campus</h2>
+    <div class="contact-details">
+      <p><strong>Address</strong><br>78, Harrington Road, Chetpet<br>Chennai, Tamil Nadu – 600 031</p>
+      <p><strong>School Hours</strong><br>Monday – Saturday, 8:00 AM – 4:00 PM</p>
+      <p><strong>Website</strong><br><a href="http://www.mccschool.edu.in">www.mccschool.edu.in</a></p>
+      <p><strong>Affiliated Board</strong><br>Tamil Nadu State Board</p>
+    </div>
+  </div>
+  <div class="contact-map">
+    <span class="map-icon">📍</span>
+    <p>78, Harrington Road<br>Chetpet, Chennai 600 031</p>
+    <a href="https://maps.google.com/?q=MCC+Higher+Secondary+School+Chetpet+Chennai" target="_blank" style="display:inline-block;margin-top:16px;padding:10px 28px;border:1px solid var(--gold);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;">Open in Maps</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-motto">"In Hoc Signo" — In This Sign Conquer</div>
+  <div class="footer-copy">© MCC Higher Secondary School, Chennai · Est. 1835</div>
+</footer>
+
+</body>
+</html>
